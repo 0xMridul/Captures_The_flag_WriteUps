@@ -361,25 +361,19 @@ The application should:
 \---
 
 
+## 9. Evidence
 
-\## 9. Evidence
+### Database Enumeration
 
+![Database Enumeration](01-database-enumeration.png)
 
+### Table Enumeration
 
-The following screenshots were captured during exploitation:
+![Table Enumeration](02-table-enumeration.png)
 
+### Secret Vault Dump
 
-
-\* `01-database-enumeration.png` — Database enumeration
-
-\* `02-table-enumeration.png` — Table enumeration
-
-\* `03-secret-vault-dump.png` — `secret\_vault` contents
-
-
-
-\---
-
+![Secret Vault Dump](03-secret-vault-dump.png)
 
 
 \## References
