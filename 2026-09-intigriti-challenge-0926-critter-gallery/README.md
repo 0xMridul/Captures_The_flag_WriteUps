@@ -1,34 +1,34 @@
-\# Intigriti September 2026 — Critter Gallery
+# Intigriti September 2026 — Critter Gallery
 
 
 
-\*\*Challenge URL:\*\* https://challenge-0926.challenges.intigriti.io/
+**Challenge URL:** https://challenge-0926.challenges.intigriti.io/
 
 
 
-\*\*Vulnerable Endpoint:\*\*
+**Vulnerable Endpoint:**
 
 https://challenge-0926.challenges.intigriti.io/challenge.php?pic=Zm94
 
 
 
-\*\*Tier:\*\* 2
+**Tier:** 2
 
 
 
-\*\*Vulnerability:\*\* SQL Injection (CWE-89)
+**Vulnerability:** SQL Injection (CWE-89)
 
 
 
-\---
+---
 
 
 
-\## Overview
+## Overview
 
 
 
-The \*\*Critter Gallery\*\* challenge is a PHP application that displays animal information based on the `pic` parameter.
+The **Critter Gallery** challenge is a PHP application that displays animal information based on the `pic` parameter.
 
 
 
@@ -44,11 +44,11 @@ The vulnerability can be exploited to enumerate databases and tables and read da
 
 
 
-\---
+---
 
 
 
-\## 1. Identify the Injection Point
+## 1. Identify the Injection Point
 
 
 
@@ -108,11 +108,11 @@ This indicates that the application decodes the supplied value before processing
 
 
 
-\---
+---
 
 
 
-\## 2. Confirm SQL Injection
+## 2. Confirm SQL Injection
 
 
 
@@ -160,11 +160,11 @@ This confirms a \*\*one-column UNION-based SQL injection\*\*.
 
 
 
-\---
+---
 
 
 
-\## 3. Enumerate Databases
+## 3. Enumerate Databases
 
 
 
@@ -210,11 +210,11 @@ critter\_gallery
 
 
 
-\---
+---
 
 
 
-\## 4. Enumerate Tables
+## 4. Enumerate Tables
 
 
 
@@ -252,11 +252,11 @@ The `secret\_vault` table was selected for further testing.
 
 
 
-\---
+---
 
 
 
-\## 5. Dump the `secret\_vault` Table
+## 5. Dump the `secret\_vault` Table
 
 
 
@@ -290,11 +290,11 @@ id    note
 
 
 
-\---
+---
 
 
 
-\## 6. Flag
+## 6. Flag
 
 
 
@@ -306,11 +306,11 @@ INTIGRITI{01a09f56-74a2-700b-a849-ffe6742327b2}
 
 
 
-\---
+---
 
 
 
-\## 7. Impact
+## 7. Impact
 
 
 
@@ -330,11 +330,11 @@ Depending on the privileges granted to the database account, SQL injection could
 
 
 
-\---
+---
 
 
 
-\## 8. Remediation
+## 8. Remediation
 
 
 
@@ -342,23 +342,22 @@ The application should:
 
 
 
-\* Use prepared statements and parameterized SQL queries.
+* Use prepared statements and parameterized SQL queries.
 
-\* Never concatenate user-controlled input directly into SQL queries.
+* Never concatenate user-controlled input directly into SQL queries.
 
-\* Treat base64 encoding only as an encoding mechanism, not as a security control.
+* Treat base64 encoding only as an encoding mechanism, not as a security control.
 
-\* Validate the `pic` parameter according to the expected input format.
+* Validate the `pic` parameter according to the expected input format.
 
-\* Apply least-privilege permissions to the application's database account.
+* Apply least-privilege permissions to the application's database account.
 
-\* Avoid exposing unnecessary database information to the application layer.
+* Avoid exposing unnecessary database information to the application layer.
 
-\* Consider additional application-layer protections such as appropriate WAF rules.
+* Consider additional application-layer protections such as appropriate WAF rules.
 
 
-
-\---
+---
 
 
 ## 9. Evidence
@@ -376,15 +375,15 @@ The application should:
 ![Secret Vault Dump](03-secret-vault-dump.png)
 
 
-\## References
+## References
 
 
 
-\* \[Intigriti](https://www.intigriti.com/)
+* [Intigriti](https://www.intigriti.com/)
 
-\* \[OWASP SQL Injection](https://owasp.org/www-community/attacks/SQL\_Injection)
+* [OWASP SQL Injection](https://owasp.org/www-community/attacks/SQL\_Injection)
 
-\* \[sqlmap](https://sqlmap.org/)
+* [sqlmap](https://sqlmap.org/)
 
 
 
